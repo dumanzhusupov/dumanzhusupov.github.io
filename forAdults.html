@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="stylesheet.css">
-  <link rel="icon" type="image/x-icon" href="images/teenis_logo.png">
+  <link rel="icon" type="image/x-icon" href="img.png">
 
 </head>
 <body>
@@ -17,8 +17,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <img src="images/teenis_logo.png" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
-  <a class="navbar-brand" href="#">Tennis King</a>
+  <img src="src/img/Tennis%20King%20logo.jpg" alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
+  <a class="navbar-brand" href="index.html">Tennis King</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -39,7 +39,7 @@
           <a class="dropdown-item" href="forKids.html">Tennis for kids</a>
           <a class="dropdown-item" href="forAdults.html">Tennis for adults</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Individual Training</a>
+          <a class="dropdown-item" href="tournament.html">Tournaments</a>
         </div>
       </li>
 
@@ -63,7 +63,7 @@
   <div  class="Heading">
     <h1>Tennis for adults in Astana</h1>
     <h5>Tennis in Astana for adults is one of the best ways to relieve tension after a hard day, stretch your muscles and keep your body in good shape. The difference from other sports in fitness centers is that the loads here are more invisible.</h5>
-    <img src="https://tennis-astana.kz/images/inner3.jpg" alt="tennis">
+    <img class="container"  src="https://tennis-astana.kz/images/inner3.jpg" alt="tennis">
   </div>
 <div class="accordion" id="accordion">
   <div class="accordion-item">
@@ -115,7 +115,7 @@
 </div>
 </div>
 </body>
-<footer class="py-5">
+<footer class="py-5" onload='document.email.focus()'>
   <div class="row">
     <div class="col-6 col-md-2 mb-3">
       <ul class="nav flex-column">
@@ -139,6 +139,7 @@
     </div>
 
     <div class="col-6 col-md-2 mb-3">
+
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
@@ -147,15 +148,34 @@
         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
       </ul>
     </div>
+    <script>
+      function ValidateEmail(inputText)
+      {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(inputText.value.match(mailformat))
+        {
+          alert("Valid email address!");
+          document.form.email.focus();
+          return true;
+        }
+        else
+        {
+          alert("You have entered an invalid email address!");
+          document.form.email.focus();
+          return false;
+        }
+      }
 
+    </script>
     <div class="col-md-5 offset-md-1 mb-3">
-      <form>
+      <form name="form">
         <h5>Subscribe to our newsletter</h5>
         <p>Monthly digest of what's new and exciting from us.</p>
         <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-          <label for="newsletter1" class="visually-hidden">Email address</label>
-          <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-          <button class="btn btn-primary" type="button">Subscribe</button>
+          <label for="email" class="visually-hidden">Email address</label>
+          <input id="email" name="email" type="text" class="form-control" placeholder="Email address" oninvalid="alert('You must fill out the form!');" required>
+          <p id="result"></p>
+          <input class="btn btn-primary" type="submit" value="Subscribe" onclick="ValidateEmail(document.form.email)">
         </div>
       </form>
     </div>
