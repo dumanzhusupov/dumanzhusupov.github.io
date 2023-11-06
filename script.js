@@ -1,4 +1,29 @@
-const countToDate = new Date().setHours(new Date().getHours() + 24)
+var configTime = {
+  timeHours:24,
+  animationRatePerSecond:1000,
+};
+
+window.addEventListener("load", () => {
+  const submitConfig = document.querySelector("#submitConfig");
+  const txtInfo = document.querySelector("#setConfig");
+
+  submitConfig.addEventListener("click", (event) => {
+    countToDate = new Date().setHours(new Date().getHours() + txtInfo.value);
+    const currentDate = new Date()
+    const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
+    flipAllCards(timeBetweenDates)
+
+    previousTimeBetweenDates = timeBetweenDates
+    var audio = new Audio('sound.mp3');
+    audio.play();
+  })
+});
+
+function updateConfig(number){
+  configTime.timeHours = number;
+}
+
+var countToDate = new Date().setHours(new Date().getHours() + configTime.timeHours);
 let previousTimeBetweenDates
 setInterval(() => {
   const currentDate = new Date()
@@ -6,7 +31,7 @@ setInterval(() => {
   flipAllCards(timeBetweenDates)
 
   previousTimeBetweenDates = timeBetweenDates
-}, 250)
+}, configTime.animationRatePerSecond);
 
 function flipAllCards(time) {
   const seconds = time % 60

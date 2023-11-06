@@ -5,11 +5,14 @@
   <title>Tournaments</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheet.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link rel="icon" type="image/x-icon" href="img.png">
+  <link rel="stylesheet" href="questionCSS.css">
   <script src="script.js" defer></script>
   <script src="toDoScript.js"></script>
   <script type="text/javascript" src="https://livejs.com/live.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js"></script>
 </head>
 <body id="tournament">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -49,6 +52,31 @@
     </form>
   </div>
 </nav>
+<div class="col-2 d-flex justify-content-center mt-4">
+  <h2>Set</h2>
+  <div style="width: 20px;"></div>
+  <input id="setConfig" name="setConfig" type="text" class="form-control" placeholder="Time Hours" >
+  <div class="col-lg-5 col-md-5 col-sm-5">
+    <button type="submit" class="btn btn-info"
+            id="submitConfig">Submit</button>
+  </div>
+</div>
+<script>
+  // Get the button element
+  const button = document.querySelector('#submitConfig');
+
+  // Add a mouseover event listener
+  button.addEventListener('mouseover', () => {
+    // Change the button's background color
+    button.style.backgroundColor = 'blue';
+  });
+
+  // Add a mouseout event listener
+  button.addEventListener('mouseout', () => {
+    // Change the button's background color back to its original color
+    button.style.backgroundColor = '';
+  });
+</script>
 <h1 class="tournament">Until new tournament</h1>
 <div class="containers">
   <div class="containers-segment">
@@ -93,6 +121,15 @@
 </div>
 <div style="height: 100px; width: 100%;"><!---To make space between todolist -->
 </div>
+<h1 class="container" style="display: flex; justify-content: center; align-items: center">Last week winners</h1>
+<ol class="list-group list-group-numbered">
+  <li class="list-group-item">Abiyev Arystanbek</li>
+  <li class="list-group-item">Zhusupov Duman</li>
+  <li class="list-group-item">Ashim Batyr</li>
+  <li class="list-group-item">Askar Khaimuldin</li>
+  <li class="list-group-item">Olzhas Turar</li>
+  <li class="list-group-item">Mira Rahimzhanova</li>
+</ol>
 <div>
   <header class="bg-secondary text-white p-lg-3">
     <div class="container">
@@ -102,6 +139,7 @@
         </div>
       </div>
     </div>
+
   </header>
   <div class="container mt-3">
     <h2>Add some tasks...</h2>
@@ -122,7 +160,6 @@
         </div>
       </div>
     </form>
-
     <h3 class="mt-4">Your tasks:</h3>
     <form id="addForm">
       <ul class="list-group col-10" id="items"></ul>
@@ -130,7 +167,155 @@
   </div>
 </div>
 <script type="text/javascript" src="toDoScript.js"></script>
+<div class="container">
+<form>
 
+  <p>Maximum input characters: 15</p>
+  <textarea maxlength="15"></textarea>
+  <p>
+    <span class="GFG">15</span>
+    Characters Remaining
+  </p>
+
+</form>
+</div>
+<div class="start_btn"><button>Start Quiz</button></div>
+<!-- Info Box -->
+<div class="info_box">
+  <div class="info-title"><span>Some Rules of this Quiz</span></div>
+  <div class="info-list">
+    <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
+    <div class="info">2. Once you select your answer, it can't be undone.</div>
+    <div class="info">3. You can't select any option once time goes off.</div>
+    <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+    <div class="info">5. You'll get points on the basis of your correct answers.</div>
+  </div>
+  <div class="buttons">
+    <button class="quit">Exit Quiz</button>
+    <button class="restart">Continue</button>
+  </div>
+</div>
+<!-- Quiz Box -->
+<div class="quiz_box">
+  <header>
+    <div class="title">Awesome Quiz Application</div>
+    <div class="timer">
+      <div class="time_left_txt">Time Left</div>
+      <div class="timer_sec">15</div>
+    </div>
+    <div class="time_line"></div>
+  </header>
+  <section>
+    <div class="que_text">
+      <!-- Here I've inserted question from JavaScript -->
+    </div>
+    <div class="option_list">
+      <!-- Here I've inserted options from JavaScript -->
+    </div>
+  </section>
+  <!-- footer of Quiz Box -->
+  <footer>
+    <div class="total_que">
+      <!-- Here I've inserted Question Count Number from JavaScript -->
+    </div>
+    <button class="next_btn">Next Que</button>
+  </footer>
+</div>
+<!-- Result Box -->
+<div class="result_box">
+  <div class="icon">
+    <i class="fas fa-crown"></i>
+  </div>
+  <div class="complete_text">You've completed the Quiz!</div>
+  <div class="score_text">
+    <!-- Here I've inserted Score Result from JavaScript -->
+  </div>
+  <div class="buttons">
+    <button class="restart">Replay Quiz</button>
+    <button class="quit">Quit Quiz</button>
+  </div>
+</div>
+
+
+<script src="questions.js"></script>
+<script src="questionsScript.js"></script>
+<script>
+  $(document).ready(function () {
+    var max_length = 15;
+    $('textarea').keyup(function () {
+      var len = max_length - $(this).val().length;
+      $('.GFG').text(len);
+    });
+  });
+</script>
+<div>
+  <h1 style="color:green; display: flex; align-items: center; justify-content: center">Monitoring</h1>
+  <div>
+    <canvas id="barChartID"></canvas>
+  </div>
+</div>
+<script>
+  // Bar chart
+  new Chart($("#barChartID"), {
+    type: 'bar',
+    options: {
+      legend: { display: true },
+      indexAxis: 'x',
+      title: {
+        display: true,
+        text: 'Bar Chart using ChartJS library'
+      }
+    },
+    data: {
+      labels: ["C++", "Java", "Blockchain", "PHP", "Python","HTML"],
+      datasets: [
+        {
+          label: "Technology Learned by Students",
+          backgroundColor: ["#FFC0CB", "#0000FF",
+            "#00FFFF", "#FFA500", "#FF7F50","#FF0000"],
+          data: [234, 356, 819, 732, 213, 542]
+        }
+      ]
+    }
+  });
+</script>
+<canvas id="myChart"></canvas>
+<script>new Chart($("#myChart"), {
+  type: "bar",
+  data: {
+    labels: ["Ace", "Double Fault", "Unforced Error", "Winner"],
+    datasets: [{
+      label: "Tennis Statistics",
+      data: [10, 2, 5, 15]
+    }]
+  },
+  options: {}
+});
+</script>
+<canvas id="ChartTennis"></canvas>
+<script>
+  new Chart($("#ChartTennis"), {
+      type: "pie",
+      data: {
+        labels: [
+          'Back-Hand',
+          'Fore-Hand',
+          'Serve'
+        ],
+        datasets: [{
+          label: "Most Error things",
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4
+        }]
+      },
+  });
+
+</script>
 </body>
 <footer class="py-5" onload='document.email.focus()'>
   <div class="row">

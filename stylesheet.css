@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *{
   font-family: Lora, serif;
   margin: auto;
@@ -19,6 +21,7 @@
   text-align: left;
   margin: 50px 0;
 }
+/* FLIP CARD ANIMATION*/
 .flip-card {
   position: relative;
   display: inline-flex;
@@ -85,6 +88,31 @@
   }
 }
 
+/*MONITORING SYSTEM*/
+.charts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.chart {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.chart h2 {
+  font-size: 18px;
+}
+
+.bar-chart, .pie-chart {
+  height: 200px;
+}
+
+
 .containers {
   display: flex;
   gap: .5em;
@@ -106,3 +134,5 @@
 .segment-title {
   font-size: 1rem;
 }
+
+
